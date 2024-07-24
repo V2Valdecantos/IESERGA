@@ -44,6 +44,15 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToggleNameSheet"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ce47ea6-9594-4a9f-a0aa-1e8637fee75e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -211,6 +220,17 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0dcae1b7-4279-4831-9bbc-ea1454c5541a"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleNameSheet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -798,6 +818,7 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
+        m_Player_ToggleNameSheet = m_Player.FindAction("ToggleNameSheet", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -873,12 +894,14 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Rotate;
+    private readonly InputAction m_Player_ToggleNameSheet;
     public struct PlayerActions
     {
         private @CameraControls m_Wrapper;
         public PlayerActions(@CameraControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
+        public InputAction @ToggleNameSheet => m_Wrapper.m_Player_ToggleNameSheet;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -894,6 +917,9 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
             @Rotate.started += instance.OnRotate;
             @Rotate.performed += instance.OnRotate;
             @Rotate.canceled += instance.OnRotate;
+            @ToggleNameSheet.started += instance.OnToggleNameSheet;
+            @ToggleNameSheet.performed += instance.OnToggleNameSheet;
+            @ToggleNameSheet.canceled += instance.OnToggleNameSheet;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -904,6 +930,9 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
             @Rotate.started -= instance.OnRotate;
             @Rotate.performed -= instance.OnRotate;
             @Rotate.canceled -= instance.OnRotate;
+            @ToggleNameSheet.started -= instance.OnToggleNameSheet;
+            @ToggleNameSheet.performed -= instance.OnToggleNameSheet;
+            @ToggleNameSheet.canceled -= instance.OnToggleNameSheet;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1088,6 +1117,7 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+        void OnToggleNameSheet(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

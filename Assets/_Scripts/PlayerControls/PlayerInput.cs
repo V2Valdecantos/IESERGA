@@ -8,14 +8,16 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float moveSpeed = 10;
     [SerializeField] private float rotateSpeed = 100;
 
-    public static event OnMovePerformed OnMove;
-    public delegate void OnMovePerformed(Vector2 moveInput);
+    public static event Action<Vector2> OnMove;
+    public static event Action<float> OnRotate;
+    public static event Action OnToggleNameSheet;
 
-    public static event OnRotationPerformed OnRotate;
-    public delegate void OnRotationPerformed(float theta);
+    private static PlayerInput instance;
 
     private void Awake()
     {
+        InitializeSingleton();
+
         if (playerControls == null)
         {
             playerControls = new CameraControls();
@@ -25,12 +27,18 @@ public class PlayerInput : MonoBehaviour
     private void OnEnable()
     {
         playerControls.Enable();
+
+        playerControls.Player.ToggleNameSheet.performed += HandleToggleNameSheet;
     }
 
     private void OnDisable()
     {
         playerControls.Disable();
+
+        playerControls.Player.ToggleNameSheet.performed -= HandleToggleNameSheet;
     }
+
+    private void HandleToggleNameSheet(InputAction.CallbackContext context) => OnToggleNameSheet?.Invoke();
 
     private void FixedUpdate()
     {
@@ -42,4 +50,18 @@ public class PlayerInput : MonoBehaviour
     }
 
 
+
+    private void InitializeSingleton()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 }
