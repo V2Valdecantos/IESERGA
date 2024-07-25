@@ -30,6 +30,16 @@ public class NameSheet : MonoBehaviour
 
     public static event Action<int> OnNameSheetSubmit;
 
+    private void OnEnable()
+    {
+        ModularPart.OnPartHit += AddEvidence;
+    }
+
+    private void OnDisable()
+    {
+        ModularPart.OnPartHit -= AddEvidence;
+    }
+
     private void Start()
     {
         for (int i = 0; i < evidenceList.Count; i++)
@@ -40,6 +50,8 @@ public class NameSheet : MonoBehaviour
 
     public void AddEvidence(Sprite data, EvidenceReason reason)
     {
+        if (CheckDuplicate(reason)) { return; }
+
         foreach (Evidence evidence in evidenceList)
         {
             if (!evidence.isOccupied)
@@ -56,6 +68,8 @@ public class NameSheet : MonoBehaviour
 
     public void AddEvidence(string data, EvidenceReason reason)
     {
+        if (CheckDuplicate(reason)) { return; }
+
         foreach (Evidence evidence in evidenceList)
         {
             if (!evidence.isOccupied)
@@ -68,6 +82,19 @@ public class NameSheet : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public bool CheckDuplicate(EvidenceReason reason)
+    {
+        foreach (Evidence evidence in evidenceList)
+        {
+            if (evidence.reason == reason)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void RemoveEvidence(int index)

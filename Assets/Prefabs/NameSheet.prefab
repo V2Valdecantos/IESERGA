@@ -552,7 +552,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3316184550148894093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8458827102734767896}
+        m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
+        m_MethodName: RemoveEvidence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1621528382522523957
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +685,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7464563028305680329}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8458827102734767896}
+        m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
+        m_MethodName: RemoveEvidence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1677345205672375501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1653,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7203976435250048910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8458827102734767896}
+        m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
+        m_MethodName: RemoveEvidence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2508062448257483128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,7 +1995,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6633724820159611836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8458827102734767896}
+        m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
+        m_MethodName: RemoveEvidence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3068903816516497229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,7 +2684,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2380932631326387936}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8458827102734767896}
+        m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
+        m_MethodName: RemoveEvidence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3929479318565749668
 GameObject:
   m_ObjectHideFlags: 0
@@ -4361,7 +4421,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2047118462764558379}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8458827102734767896}
+        m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
+        m_MethodName: RemoveEvidence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5806488605994310079
 GameObject:
   m_ObjectHideFlags: 0
@@ -6956,7 +7028,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2011190387468870337}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8458827102734767896}
+        m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
+        m_MethodName: RemoveEvidence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8845502394771433985
 GameObject:
   m_ObjectHideFlags: 0
@@ -7173,7 +7257,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3471489267366521105}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8458827102734767896}
+        m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
+        m_MethodName: RemoveEvidence
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8985564493222572911
 GameObject:
   m_ObjectHideFlags: 0

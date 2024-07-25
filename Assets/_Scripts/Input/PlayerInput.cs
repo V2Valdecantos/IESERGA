@@ -10,9 +10,11 @@ public class PlayerInput : MonoBehaviour
 
     public static event Action<Vector2> OnMove;
     public static event Action<float> OnRotate;
-    public static event Action OnToggleNameSheet;
 
-    private static PlayerInput instance;
+    public static event Action OnToggleNameSheet;
+    public static event Action OnFire;
+
+    public static PlayerInput instance;
 
     private void Awake()
     {
@@ -26,19 +28,28 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
-        playerControls.Enable();
+        if (playerControls == null)
+        {
+            playerControls = new CameraControls();
+        }
 
+        playerControls.Enable();
         playerControls.Player.ToggleNameSheet.performed += HandleToggleNameSheet;
+        playerControls.Player.Fire.performed += HandleFirePerformed;
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
-
-        playerControls.Player.ToggleNameSheet.performed -= HandleToggleNameSheet;
+        if (playerControls != null)
+        {
+            playerControls.Player.ToggleNameSheet.performed -= HandleToggleNameSheet;
+            playerControls.Player.Fire.performed -= HandleFirePerformed;
+            playerControls.Disable();
+        }
     }
 
     private void HandleToggleNameSheet(InputAction.CallbackContext context) => OnToggleNameSheet?.Invoke();
+    private void HandleFirePerformed(InputAction.CallbackContext context) => OnFire?.Invoke();
 
     private void FixedUpdate()
     {
@@ -49,7 +60,17 @@ public class PlayerInput : MonoBehaviour
         OnRotate?.Invoke(theta * rotateSpeed * Time.deltaTime);
     }
 
-
+    public void RaycastState(bool state)
+    {
+        if (state)
+        {
+            playerControls.Player.Fire.Enable();
+        }
+        else
+        {
+            playerControls.Player.Fire.Disable();
+        }
+    }
 
     private void InitializeSingleton()
     {
