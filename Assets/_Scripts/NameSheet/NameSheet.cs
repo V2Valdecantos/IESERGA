@@ -15,10 +15,10 @@ public enum EvidenceReason : int
 class Evidence
 {
     public bool isOccupied;
+    public GameObject parent;
     public Image image;
     public TMP_Text text;
     public EvidenceReason reason;
-    public GameObject cancelButton;
 }
 
 public class NameSheet : MonoBehaviour
@@ -56,12 +56,15 @@ public class NameSheet : MonoBehaviour
         {
             if (!evidence.isOccupied)
             {
-                evidence.image.sprite = data;
-                evidence.image.enabled = true;
+                evidence.parent.SetActive(true);
                 evidence.isOccupied = true;
                 evidence.reason = reason;
-                evidence.cancelButton.SetActive(true);
-                return;
+
+                /* Set Image */
+                evidence.image.sprite = data;
+                evidence.image.enabled = true;
+                /* Disable Other Evidence Type */
+                evidence.text.enabled = false;
             }
         }
     }
@@ -74,11 +77,16 @@ public class NameSheet : MonoBehaviour
         {
             if (!evidence.isOccupied)
             {
-                evidence.text.text = data;
-                evidence.text.enabled = true;
+                evidence.parent.SetActive(true);
                 evidence.isOccupied = true;
                 evidence.reason = reason;
-                evidence.cancelButton.SetActive(true);
+
+                /* Set Text */
+                evidence.text.text = data;
+                evidence.text.enabled = true;
+                /* Disable Other Evidence Type */
+                evidence.image.enabled = false;
+
                 return;
             }
         }
@@ -106,13 +114,17 @@ public class NameSheet : MonoBehaviour
             return; 
         }
 
+        /* Reset Holders */
+        evidenceList[index].image.enabled = true;
         evidenceList[index].image.sprite = null;
+        evidenceList[index].text.enabled = true;
         evidenceList[index].text.text = "";
-        evidenceList[index].image.enabled = false;
-        evidenceList[index].text.enabled = false;
+
+        /* Reset Data */
         evidenceList[index].isOccupied = false;
         evidenceList[index].reason = EvidenceReason.NONE;
-        evidenceList[index].cancelButton.SetActive(false);
+
+        evidenceList[index].parent.SetActive(false); 
     }
 
     public void UpdateNameAndSex(string name, string sex)
