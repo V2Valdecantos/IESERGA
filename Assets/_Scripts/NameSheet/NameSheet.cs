@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public enum EvidenceReason : int 
 {
     NONE = -1,
-    TEST_1 = 0,
-    TEST_2 = 1,
+    TEST_SUCCESS_1 = 0,
+    TEST_SUCCESS_2,
+    TEST_FAIL_1
 }
 
 [Serializable]
@@ -32,11 +33,13 @@ public class NameSheet : MonoBehaviour
 
     private void OnEnable()
     {
+        NPCSpawner.OnSpawn += UpdateNameAndSex;
         ModularPart.OnPartHit += AddEvidence;
     }
 
     private void OnDisable()
     {
+        NPCSpawner.OnSpawn -= UpdateNameAndSex;
         ModularPart.OnPartHit -= AddEvidence;
     }
 

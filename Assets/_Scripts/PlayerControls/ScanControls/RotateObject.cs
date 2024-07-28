@@ -9,7 +9,7 @@ public class RotateObject : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerInput.OnRotate += HandleMove;
+        PlayerInput.OnRotate -= HandleMove;
     }
 
     private void HandleMove(float theta)

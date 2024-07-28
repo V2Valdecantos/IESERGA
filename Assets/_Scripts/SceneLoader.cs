@@ -5,11 +5,13 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadExamineScene()
     {
+        Debug.Log("Click");
         SceneManager.LoadScene(SceneNames.examine_scene);
     }
 
     public void LoadConversationScreen()
     {
+        Debug.Log("Click");
         SceneManager.LoadScene(SceneNames.conversation_scene);
     }
 
@@ -19,10 +21,4 @@ public class SceneLoader : MonoBehaviour
     }
 }
 
-public class SceneNames
-{
-    public static string examine_scene = "ExamineScene";
-    public static string conversation_scene = "MainScene";
-    public static string title_screen = "TitleScreen";
-    public static string end_screen = "EndScreen";
-}
+

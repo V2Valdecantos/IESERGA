@@ -5,6 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data_NPC", menuName = "Data Scriptable Object/NPC", order = 2)]
 public class NPC_SO : ScriptableObject
 {
-    public GameObject prefab;
-    public List<EvidenceReason> reasonsList;
+    [SerializeField] private GameObject talkingModel;
+    [SerializeField] private GameObject blurredModel;
+    [SerializeField] private GameObject zoomedModel;
+    [SerializeField] private List<EvidenceReason> reasonsList;
+    [SerializeField] private string nameNPC;
+    [SerializeField] private string sexNPC;
+
+    public GameObject TalkingModel => talkingModel;
+    public GameObject BlurredModel => blurredModel; 
+    public GameObject ZoomedModel => zoomedModel;
+    public List<EvidenceReason> ReasonsList => reasonsList;
+    public string NameNPC => nameNPC;
+    public string SexNPC => sexNPC;
 }
