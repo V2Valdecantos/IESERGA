@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField] private float movementScale;
     [SerializeField] private Vector2 areaLimits;
 
     private void OnEnable()
@@ -11,12 +12,12 @@ public class CameraMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerInput.OnMove += HandleMove;
+        PlayerInput.OnMove -= HandleMove;
     }
 
     private void HandleMove(Vector2 movement)
     {
-        transform.Translate(movement, Space.Self);
+        transform.Translate(movement * movementScale, Space.Self);
 
         //Clamp
         Vector3 position = transform.localPosition;
