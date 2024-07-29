@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2588578542695883235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
         m_MethodName: RemoveEvidence
         m_Mode: 3
@@ -2475,7 +2475,6 @@ GameObject:
   - component: {fileID: 231960093798098203}
   - component: {fileID: 5472644668200664881}
   - component: {fileID: 6179352479101653449}
-  - component: {fileID: 2588578542695883235}
   - component: {fileID: 1373301559045259009}
   m_Layer: 7
   m_Name: NameSheet
@@ -2545,62 +2544,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2588578542695883235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3054066970581999030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14f3bca989b12ac4db89f774e9a29bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdown: {fileID: 5919522730435372507}
-  sheetName: {fileID: 7302270014042213441}
-  sheetSex: {fileID: 2176882486222250725}
-  evidenceList:
-  - isOccupied: 0
-    parent: {fileID: 2963050053820168674}
-    image: {fileID: 7811678320748658342}
-    text: {fileID: 5653747139826345928}
-    reason: -1
-  - isOccupied: 0
-    parent: {fileID: 7749774578451099728}
-    image: {fileID: 6622858854023847909}
-    text: {fileID: 2745741127512463818}
-    reason: -1
-  - isOccupied: 0
-    parent: {fileID: 9071222714460827733}
-    image: {fileID: 4119370418594400768}
-    text: {fileID: 7304381213915794033}
-    reason: -1
-  - isOccupied: 0
-    parent: {fileID: 8205414130288729604}
-    image: {fileID: 7659358401105594354}
-    text: {fileID: 8940625810381740555}
-    reason: -1
-  - isOccupied: 0
-    parent: {fileID: 8717333100697391892}
-    image: {fileID: 2707944102562909962}
-    text: {fileID: 6706100723193366456}
-    reason: -1
-  - isOccupied: 0
-    parent: {fileID: 4189583907619546615}
-    image: {fileID: 2731936918889651760}
-    text: {fileID: 5298472923224583421}
-    reason: -1
-  - isOccupied: 0
-    parent: {fileID: 6253297520716684651}
-    image: {fileID: 3366390154815435038}
-    text: {fileID: 524063639057305605}
-    reason: -1
-  - isOccupied: 0
-    parent: {fileID: 2837949578801182690}
-    image: {fileID: 4869158106949479315}
-    text: {fileID: 1399976333864977897}
-    reason: -1
 --- !u!114 &1373301559045259009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2748,7 +2691,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2588578542695883235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
         m_MethodName: RemoveEvidence
         m_Mode: 3
@@ -3178,7 +3121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2588578542695883235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
         m_MethodName: RemoveEvidence
         m_Mode: 3
@@ -4660,7 +4603,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2588578542695883235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
         m_MethodName: RemoveEvidence
         m_Mode: 3
@@ -4927,7 +4870,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2588578542695883235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
         m_MethodName: RemoveEvidence
         m_Mode: 3
@@ -5336,6 +5279,7 @@ GameObject:
   - component: {fileID: 4235973991624450589}
   - component: {fileID: 808021937609353373}
   - component: {fileID: 2506507479781488715}
+  - component: {fileID: 2697302586548314788}
   m_Layer: 7
   m_Name: NameSheet_WorldSpace
   m_TagString: Untagged
@@ -5571,7 +5515,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1813
+  m_VersionIndex: 1816
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5676,6 +5620,62 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2697302586548314788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281316227791043605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f3bca989b12ac4db89f774e9a29bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 5919522730435372507}
+  sheetName: {fileID: 7302270014042213441}
+  sheetSex: {fileID: 2176882486222250725}
+  evidenceList:
+  - isOccupied: 0
+    parent: {fileID: 2963050053820168674}
+    image: {fileID: 7811678320748658342}
+    text: {fileID: 5653747139826345928}
+    reason: -1
+  - isOccupied: 0
+    parent: {fileID: 7749774578451099728}
+    image: {fileID: 6622858854023847909}
+    text: {fileID: 2745741127512463818}
+    reason: -1
+  - isOccupied: 0
+    parent: {fileID: 9071222714460827733}
+    image: {fileID: 4119370418594400768}
+    text: {fileID: 7304381213915794033}
+    reason: -1
+  - isOccupied: 0
+    parent: {fileID: 8205414130288729604}
+    image: {fileID: 7659358401105594354}
+    text: {fileID: 8940625810381740555}
+    reason: -1
+  - isOccupied: 0
+    parent: {fileID: 8717333100697391892}
+    image: {fileID: 2707944102562909962}
+    text: {fileID: 6706100723193366456}
+    reason: -1
+  - isOccupied: 0
+    parent: {fileID: 4189583907619546615}
+    image: {fileID: 2731936918889651760}
+    text: {fileID: 5298472923224583421}
+    reason: -1
+  - isOccupied: 0
+    parent: {fileID: 6253297520716684651}
+    image: {fileID: 3366390154815435038}
+    text: {fileID: 524063639057305605}
+    reason: -1
+  - isOccupied: 0
+    parent: {fileID: 2837949578801182690}
+    image: {fileID: 4869158106949479315}
+    text: {fileID: 1399976333864977897}
+    reason: -1
 --- !u!1 &6291810135177246790
 GameObject:
   m_ObjectHideFlags: 0
@@ -6342,7 +6342,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2588578542695883235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
         m_MethodName: RemoveEvidence
         m_Mode: 3
@@ -6846,7 +6846,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3489015521228353799}
   - component: {fileID: 2502107198776288000}
-  - component: {fileID: 9100616996344106999}
   - component: {fileID: 1117225415268570699}
   m_Layer: 7
   m_Name: NameSheet_WorldSpace
@@ -6898,29 +6897,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &9100616996344106999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595807805106048516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
 --- !u!114 &1117225415268570699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7333,7 +7309,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2588578542695883235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
         m_MethodName: RemoveEvidence
         m_Mode: 3
@@ -7899,7 +7875,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2588578542695883235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NameSheet, Assembly-CSharp
         m_MethodName: RemoveEvidence
         m_Mode: 3

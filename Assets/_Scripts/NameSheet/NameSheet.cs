@@ -31,6 +31,11 @@ public class NameSheet : MonoBehaviour
 
     public static event Action<int> OnNameSheetSubmit;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     private void OnEnable()
     {
         NPCSpawner.OnSpawn += UpdateNameAndSex;

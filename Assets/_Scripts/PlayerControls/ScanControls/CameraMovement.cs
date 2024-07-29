@@ -5,12 +5,12 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float movementScale;
     [SerializeField] private Vector2 areaLimits;
 
-    private void OnAwake()
+    private void OnEnable()
     {
         PlayerInput.OnMove += HandleMove;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         PlayerInput.OnMove -= HandleMove;
     }

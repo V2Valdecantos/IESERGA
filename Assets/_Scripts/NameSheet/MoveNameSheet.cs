@@ -1,37 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
-public enum UIState : int 
+public enum PositionState : int 
 {
     NONE = -1,
-    POSITION_1 = 1,
-    POSITION_2,
+    START = 1,
+    END,
 }
 
-public class MoveUI : MonoBehaviour
+public class MoveNameSheet : MonoBehaviour
 {
     [Header("Set Values")]
-    [SerializeField] private List<Vector2> positions;
+    [SerializeField] private List<Vector3> positions;
     [SerializeField] private float animationTime = 0.5f;
-    [SerializeField] private RectTransform rectTransform;
 
     [Header("ReadOnly")]
-    [Tooltip("ReadOnly")][SerializeField] private UIState state = UIState.POSITION_1;
+    [Tooltip("ReadOnly")][SerializeField] private PositionState state = PositionState.START;
     [Tooltip("ReadOnly")][SerializeField] private bool isMoving = false;
-
-    private void Awake()
-    {
-        if (rectTransform == null)
-        {
-            Debug.LogError("Rect Transform Missing!");
-        }
-    }
 
     private void Start()
     {
-        rectTransform.localPosition = positions[0];
+        transform.localPosition = positions[0];
     }
 
     public void TogglePosition()
@@ -44,20 +34,20 @@ public class MoveUI : MonoBehaviour
 
     IEnumerator Move()
     {
-        Vector2 startPosition = rectTransform.localPosition;
-        Vector2 endPosition;
+        Vector3 startPosition = transform.localPosition;
+        Vector3 endPosition;
         float elapsedTime = 0f;
 
         switch (state)
         {
-            case UIState.POSITION_1:
+            case PositionState.START:
                 endPosition = positions[1];
-                state = UIState.POSITION_2;
+                state = PositionState.END;
                 break;
 
-            case UIState.POSITION_2:
+            case PositionState.END:
                 endPosition = positions[0];
-                state = UIState.POSITION_1;
+                state = PositionState.START;
                 break;
 
             default:
@@ -67,12 +57,12 @@ public class MoveUI : MonoBehaviour
 
         while (elapsedTime < animationTime)
         {
-            rectTransform.localPosition = Vector2.Lerp(startPosition, endPosition, elapsedTime / animationTime);
+            transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        rectTransform.localPosition = endPosition;
+        transform.localPosition = endPosition;
         isMoving = false;
     }
 }

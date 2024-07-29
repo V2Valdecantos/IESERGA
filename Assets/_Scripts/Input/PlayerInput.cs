@@ -14,12 +14,8 @@ public class PlayerInput : MonoBehaviour
     public static event Action OnToggleNameSheet;
     public static event Action OnFire;
 
-    public static PlayerInput instance;
-
     private void Awake()
     {
-        InitializeSingleton();
-
         if (playerControls == null)
         {
             playerControls = new CameraControls();
@@ -69,20 +65,6 @@ public class PlayerInput : MonoBehaviour
         else
         {
             playerControls.Player.Fire.Disable();
-        }
-    }
-
-    private void InitializeSingleton()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
         }
     }
 }

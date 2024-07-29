@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ToggleUINameSheet : MonoBehaviour
+public class ToggleNameSheet : MonoBehaviour
 {
-    [SerializeField] private MoveUI script;
+    [SerializeField] private MoveNameSheet script;
 
     private void OnEnable()
     {
