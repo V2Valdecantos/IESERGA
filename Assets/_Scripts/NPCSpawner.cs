@@ -14,6 +14,8 @@ public class NPCSpawner : MonoBehaviour
 
     public static event Action<string, string> OnSpawn;
     public static NPCSpawner instance;
+    public List<EvidenceReason> CurrentReasonsList => dataNPC.ReasonsList;
+    public TannerStages CurrentTannerStage => dataNPC.TannerStage;
 
     private void Awake()
     {

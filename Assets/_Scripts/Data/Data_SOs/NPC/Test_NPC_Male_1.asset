@@ -15,6 +15,7 @@ MonoBehaviour:
   talkingModel: {fileID: 1444541548089985042, guid: 36a359dd280e1424dac76666ff8fb58a, type: 3}
   blurredModel: {fileID: 297075055776433297, guid: 71f5cf332079e1444bc2c584da4e1363, type: 3}
   zoomedModel: {fileID: 8328739277692256571, guid: 5dc5502e992d1974f947407210800f6f, type: 3}
+  tannerStage: 2
   reasonsList: 0000000001000000
   nameNPC: Test_Dummy
   sexNPC: M

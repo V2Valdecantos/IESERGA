@@ -16,6 +16,7 @@ public class MoveNameSheet : MonoBehaviour
     [Header("Set Values")]
     [SerializeField] private List<Vector3> positions;
     [SerializeField] private float animationTime = 0.5f;
+    [SerializeField] private Vector3 centered;
 
     [Header("ReadOnly")]
     [SerializeField] private string currentScene;
@@ -44,6 +45,18 @@ public class MoveNameSheet : MonoBehaviour
 
             case SceneNames.examine_scene:
                 transform.localPosition = positions[2];
+                break;
+
+            case SceneNames.end_screen:
+                transform.localPosition = centered;
+                break;
+
+            case SceneNames.title_screen:
+                Destroy(gameObject);
+                break;
+
+            default:
+                Debug.LogError($"Unknown Scene Loaded {currentScene}");
                 break;
         }
     }

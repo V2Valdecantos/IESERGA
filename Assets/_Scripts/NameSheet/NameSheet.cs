@@ -1,7 +1,9 @@
 using System;
-using System.Collections.Generic;   
+using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum EvidenceReason : int 
@@ -17,10 +19,23 @@ class Evidence
 {
     public bool isOccupied;
     public GameObject parent;
-    public Image image;
-    public TMP_Text text;
+    public TMP_Text evidenceText;
+    public Image evidenceImage;
+    public Image correctionImage;
+    public GameObject clearButton; 
     public EvidenceReason reason;
 }
+
+public enum TannerStages : int 
+{
+    NONE = -1,
+    STAGE_1 = 0,
+    STAGE_2,
+    STAGE_3,
+    STAGE_4,
+    STAGE_5
+}
+
 
 public class NameSheet : MonoBehaviour
 {
@@ -28,12 +43,17 @@ public class NameSheet : MonoBehaviour
     [SerializeField] private TMP_Text sheetName;
     [SerializeField] private TMP_Text sheetSex;
     [SerializeField] private List<Evidence> evidenceList;
+    [SerializeField] private Image verdictCorrection;
 
-    public static event Action<int> OnNameSheetSubmit;
+    [Header("End Screen Sprites")]
+    [SerializeField] private Sprite checkMark;
+    [SerializeField] private Sprite crossMark;
+
+    private static NameSheet instance;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        InitializeSingleton();
     }
 
     private void OnEnable()
@@ -67,12 +87,13 @@ public class NameSheet : MonoBehaviour
                 evidence.parent.SetActive(true);
                 evidence.isOccupied = true;
                 evidence.reason = reason;
+                evidence.correctionImage.enabled = false;
 
                 /* Set Image */
-                evidence.image.sprite = data;
-                evidence.image.enabled = true;
+                evidence.evidenceImage.sprite = data;
+                evidence.evidenceImage.enabled = true;
                 /* Disable Other Evidence Type */
-                evidence.text.enabled = false;
+                evidence.evidenceText.enabled = false;
 
                 return;
             }
@@ -90,12 +111,13 @@ public class NameSheet : MonoBehaviour
                 evidence.parent.SetActive(true);
                 evidence.isOccupied = true;
                 evidence.reason = reason;
+                evidence.correctionImage.enabled = false;
 
                 /* Set Text */
-                evidence.text.text = data;
-                evidence.text.enabled = true;
+                evidence.evidenceText.text = data;
+                evidence.evidenceText.enabled = true;
                 /* Disable Other Evidence Type */
-                evidence.image.enabled = false;
+                evidence.evidenceImage.enabled = false;
 
                 return;
             }
@@ -127,10 +149,12 @@ public class NameSheet : MonoBehaviour
         }
 
         /* Reset Holders */
-        evidenceList[index].image.enabled = true;
-        evidenceList[index].image.sprite = null;
-        evidenceList[index].text.enabled = true;
-        evidenceList[index].text.text = "";
+        evidenceList[index].evidenceImage.sprite = null;
+        evidenceList[index].evidenceImage.enabled = true;
+        evidenceList[index].evidenceText.text = "";
+        evidenceList[index].evidenceText.enabled = true;
+        evidenceList[index].correctionImage.enabled = true;
+
 
         /* Reset Data */
         evidenceList[index].isOccupied = false;
@@ -148,7 +172,67 @@ public class NameSheet : MonoBehaviour
     public void SubmitNameSheet()
     {
         int value = dropdown.value;
-        OnNameSheetSubmit?.Invoke(value);
+        List<Evidence> reasonList = new List<Evidence>();
+
+        foreach (Evidence evidence in evidenceList)
+        {
+            if (evidence.reason != EvidenceReason.NONE)
+            {
+                reasonList.Add(evidence);
+            }
+        }
+
+        CheckSubmission((TannerStages)value, reasonList);
+        FindAnyObjectByType<SceneLoader>().LoadResultsScreen();
+    }
+
+    private void CheckSubmission(TannerStages verdict, List<Evidence> reasons)
+    {
+        if (NPCSpawner.instance.CurrentTannerStage == verdict)
+        {
+            verdictCorrection.enabled = true;
+            verdictCorrection.sprite = checkMark;
+            verdictCorrection.color = Color.green;
+        }
+        else
+        {
+            verdictCorrection.enabled = true;
+            verdictCorrection.sprite = crossMark;
+            verdictCorrection.color = Color.red;
+        }
+
+        List<EvidenceReason> correctReasons = NPCSpawner.instance.CurrentReasonsList;
+
+        foreach (Evidence evidence in reasons)
+        {
+            evidence.correctionImage.enabled = true;
+            evidence.clearButton.SetActive(false);
+
+            if (correctReasons.Contains(evidence.reason))
+            {      
+                evidence.correctionImage.sprite = checkMark;
+                evidence.correctionImage.color = Color.green;
+            }
+            else
+            {
+                evidence.correctionImage.sprite = crossMark;
+                evidence.correctionImage.color = Color.red;
+            }
+        }
+    }
+
+    private void InitializeSingleton()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
 }
