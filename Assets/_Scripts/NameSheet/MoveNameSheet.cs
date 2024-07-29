@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public enum PositionState : int 
 {
@@ -16,12 +18,34 @@ public class MoveNameSheet : MonoBehaviour
     [SerializeField] private float animationTime = 0.5f;
 
     [Header("ReadOnly")]
+    [SerializeField] private string currentScene;
     [Tooltip("ReadOnly")][SerializeField] private PositionState state = PositionState.START;
     [Tooltip("ReadOnly")][SerializeField] private bool isMoving = false;
 
-    private void Start()
+    private void OnEnable()
     {
-        transform.localPosition = positions[0];
+        SceneManager.sceneLoaded += GetCurrentScene;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= GetCurrentScene;
+    }
+
+    private void GetCurrentScene(Scene scene, LoadSceneMode mode) 
+    {
+        currentScene = scene.name;
+
+        switch (currentScene)
+        {
+            case SceneNames.conversation_scene:
+                transform.localPosition = positions[0];
+                break;
+
+            case SceneNames.examine_scene:
+                transform.localPosition = positions[2];
+                break;
+        }
     }
 
     public void TogglePosition()
@@ -29,10 +53,21 @@ public class MoveNameSheet : MonoBehaviour
         if (isMoving) { return; }
 
         isMoving = true;
-        StartCoroutine(Move());
+
+        switch (currentScene)
+        {
+            case SceneNames.conversation_scene:
+                StartCoroutine(MoveUsingSet1());
+                break;
+
+            case SceneNames.examine_scene:
+                StartCoroutine(MoveUsingSet2());
+                break;
+        }
+        
     }
 
-    IEnumerator Move()
+    IEnumerator MoveUsingSet1()
     {
         Vector3 startPosition = transform.localPosition;
         Vector3 endPosition;
@@ -47,6 +82,40 @@ public class MoveNameSheet : MonoBehaviour
 
             case PositionState.END:
                 endPosition = positions[0];
+                state = PositionState.START;
+                break;
+
+            default:
+                isMoving = false;
+                yield break;
+        }
+
+        while (elapsedTime < animationTime)
+        {
+            transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localPosition = endPosition;
+        isMoving = false;
+    }
+
+    IEnumerator MoveUsingSet2()
+    {
+        Vector3 startPosition = transform.localPosition;
+        Vector3 endPosition;
+        float elapsedTime = 0f;
+
+        switch (state)
+        {
+            case PositionState.START:
+                endPosition = positions[3];
+                state = PositionState.END;
+                break;
+
+            case PositionState.END:
+                endPosition = positions[2];
                 state = PositionState.START;
                 break;
 

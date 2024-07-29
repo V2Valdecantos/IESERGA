@@ -73,6 +73,8 @@ public class NameSheet : MonoBehaviour
                 evidence.image.enabled = true;
                 /* Disable Other Evidence Type */
                 evidence.text.enabled = false;
+
+                return;
             }
         }
     }
@@ -102,10 +104,12 @@ public class NameSheet : MonoBehaviour
 
     public bool CheckDuplicate(EvidenceReason reason)
     {
+        Debug.Log("Check");
         foreach (Evidence evidence in evidenceList)
         {
             if (evidence.reason == reason)
             {
+                Debug.Log("Found");
                 return true;
             }
         }
