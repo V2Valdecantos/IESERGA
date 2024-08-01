@@ -1,18 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-public enum EvidenceReason : int 
-{
-    NONE = -1,
-    TEST_SUCCESS_1 = 0,
-    TEST_SUCCESS_2,
-    TEST_FAIL_1
-}
 
 [Serializable]
 class Evidence
@@ -22,20 +12,8 @@ class Evidence
     public TMP_Text evidenceText;
     public Image evidenceImage;
     public Image correctionImage;
-    public GameObject clearButton; 
     public EvidenceReason reason;
 }
-
-public enum TannerStages : int 
-{
-    NONE = -1,
-    STAGE_1 = 0,
-    STAGE_2,
-    STAGE_3,
-    STAGE_4,
-    STAGE_5
-}
-
 
 public class NameSheet : MonoBehaviour
 {
@@ -206,7 +184,6 @@ public class NameSheet : MonoBehaviour
         foreach (Evidence evidence in reasons)
         {
             evidence.correctionImage.enabled = true;
-            evidence.clearButton.SetActive(false);
 
             if (correctReasons.Contains(evidence.reason))
             {      

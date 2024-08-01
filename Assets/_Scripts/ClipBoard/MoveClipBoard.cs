@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public enum PositionState : int 
@@ -11,7 +10,7 @@ public enum PositionState : int
     END,
 }
 
-public class MoveNameSheet : MonoBehaviour
+public class MoveClipBoard : MonoBehaviour
 {
     [Header("Set Values")]
     [SerializeField] private List<Vector3> positions;
