@@ -10,8 +10,11 @@ public class ClipBoard : MonoBehaviour
     private GameObject activeButton;
     private GameObject activePage;
 
+    private static ClipBoard instance;
+
     private void Awake()
     {
+        InitializeSingleton();
         activeButton = controlButtons[0];
         activePage = pages[0];
     }
@@ -59,5 +62,19 @@ public class ClipBoard : MonoBehaviour
 
         img.fillAmount = 1;
         activePage.SetActive(true);
+    }
+
+    private void InitializeSingleton()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 }

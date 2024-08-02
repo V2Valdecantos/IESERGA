@@ -27,13 +27,6 @@ public class NameSheet : MonoBehaviour
     [SerializeField] private Sprite checkMark;
     [SerializeField] private Sprite crossMark;
 
-    private static NameSheet instance;
-
-    private void Awake()
-    {
-        InitializeSingleton();
-    }
-
     private void OnEnable()
     {
         NPCSpawner.OnSpawn += UpdateNameAndSex;
@@ -195,20 +188,6 @@ public class NameSheet : MonoBehaviour
                 evidence.correctionImage.sprite = crossMark;
                 evidence.correctionImage.color = Color.red;
             }
-        }
-    }
-
-    private void InitializeSingleton()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
         }
     }
 
