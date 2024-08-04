@@ -11,7 +11,7 @@ class Evidence
     public GameObject parent;
     public TMP_Text evidenceText;
     public Image evidenceImage;
-    public Image correctionImage;
+    public GameObject correctionImage;
     public EvidenceReason reason;
 }
 
@@ -41,31 +41,24 @@ public class NameSheet : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < evidenceList.Count; i++)
+        foreach (Evidence evidence in evidenceList)
         {
-            RemoveEvidence(i);
+            RemoveEvidence(evidence);
         }
     }
 
     public void AddEvidence(Sprite data, EvidenceReason reason)
     {
-        if (CheckDuplicate(reason)) { return; }
+        if (CheckDuplicate(reason)) return;
 
         foreach (Evidence evidence in evidenceList)
         {
             if (!evidence.isOccupied)
             {
-                evidence.parent.SetActive(true);
-                evidence.isOccupied = true;
-                evidence.reason = reason;
-                evidence.correctionImage.enabled = false;
-
-                /* Set Image */
+                ActivateEvidence(evidence, reason);
                 evidence.evidenceImage.sprite = data;
                 evidence.evidenceImage.enabled = true;
-                /* Disable Other Evidence Type */
                 evidence.evidenceText.enabled = false;
-
                 return;
             }
         }
@@ -73,64 +66,43 @@ public class NameSheet : MonoBehaviour
 
     public void AddEvidence(string data, EvidenceReason reason)
     {
-        if (CheckDuplicate(reason)) { return; }
+        if (CheckDuplicate(reason)) return;
 
         foreach (Evidence evidence in evidenceList)
         {
             if (!evidence.isOccupied)
             {
-                evidence.parent.SetActive(true);
-                evidence.isOccupied = true;
-                evidence.reason = reason;
-                evidence.correctionImage.enabled = false;
-
-                /* Set Text */
+                ActivateEvidence(evidence, reason);
                 evidence.evidenceText.text = data;
                 evidence.evidenceText.enabled = true;
-                /* Disable Other Evidence Type */
                 evidence.evidenceImage.enabled = false;
-
                 return;
             }
         }
     }
 
-    public bool CheckDuplicate(EvidenceReason reason)
+    private void ActivateEvidence(Evidence evidence, EvidenceReason reason)
     {
-        foreach (Evidence evidence in evidenceList)
-        {
-            if (evidence.reason == reason)
-            {
-                Debug.Log("Found");
-                return true;
-            }
-        }
-
-        return false;
+        evidence.parent.SetActive(true);
+        evidence.isOccupied = true;
+        evidence.reason = reason;
+        evidence.correctionImage.SetActive(false);
     }
 
-    public void RemoveEvidence(int index)
+    public bool CheckDuplicate(EvidenceReason reason)
     {
+        return evidenceList.Exists(evidence => evidence.reason == reason);
+    }
 
-        if (index < 0 && index > evidenceList.Count)
-        {
-            Debug.LogError("Index Out Of Bounds");
-            return; 
-        }
-
-        /* Reset Holders */
-        evidenceList[index].evidenceImage.sprite = null;
-        evidenceList[index].evidenceImage.enabled = true;
-        evidenceList[index].evidenceText.text = "";
-        evidenceList[index].evidenceText.enabled = true;
-        evidenceList[index].correctionImage.enabled = true;
-
-
-        /* Reset Data */
-        evidenceList[index].isOccupied = false;
-        evidenceList[index].reason = EvidenceReason.NONE;
-
-        evidenceList[index].parent.SetActive(false); 
+    private void RemoveEvidence(Evidence evidence)
+    {
+        evidence.evidenceImage.sprite = null;
+        evidence.evidenceImage.enabled = false;
+        evidence.evidenceText.text = "";
+        evidence.evidenceText.enabled = false;
+        evidence.correctionImage.SetActive(false);
+        evidence.isOccupied = false;
+        evidence.reason = EvidenceReason.NONE;
     }
 
     public void UpdateNameAndSex(string name, string sex)
@@ -141,8 +113,7 @@ public class NameSheet : MonoBehaviour
 
     public void SubmitNameSheet()
     {
-        int value = dropdown.value;
-        List<Evidence> reasonList = new List<Evidence>();
+        List<Evidence> reasonList = new List<Evidence>(evidenceList.Count);
 
         foreach (Evidence evidence in evidenceList)
         {
@@ -152,42 +123,35 @@ public class NameSheet : MonoBehaviour
             }
         }
 
-        CheckSubmission((TannerStages)value, reasonList);
+        CheckSubmission((TannerStages)dropdown.value, reasonList);
         FindAnyObjectByType<SceneLoader>().LoadResultsScreen();
     }
 
     private void CheckSubmission(TannerStages verdict, List<Evidence> reasons)
     {
-        if (NPCSpawner.instance.CurrentTannerStage == verdict)
-        {
-            verdictCorrection.enabled = true;
-            verdictCorrection.sprite = checkMark;
-            verdictCorrection.color = Color.green;
-        }
-        else
-        {
-            verdictCorrection.enabled = true;
-            verdictCorrection.sprite = crossMark;
-            verdictCorrection.color = Color.red;
-        }
+        verdictCorrection.enabled = true;
+        verdictCorrection.sprite = NPCSpawner.instance.CurrentTannerStage == verdict ? checkMark : crossMark;
+        verdictCorrection.color = NPCSpawner.instance.CurrentTannerStage == verdict ? Color.green : Color.red;
 
         List<EvidenceReason> correctReasons = NPCSpawner.instance.CurrentReasonsList;
+        HashSet<EvidenceReason> currentReasons = new HashSet<EvidenceReason>(reasons.ConvertAll(e => e.reason));
 
-        foreach (Evidence evidence in reasons)
+        foreach (EvidenceReason correctReason in correctReasons)
         {
-            evidence.correctionImage.enabled = true;
-
-            if (correctReasons.Contains(evidence.reason))
-            {      
-                evidence.correctionImage.sprite = checkMark;
-                evidence.correctionImage.color = Color.green;
-            }
-            else
+            if (!currentReasons.Contains(correctReason))
             {
-                evidence.correctionImage.sprite = crossMark;
-                evidence.correctionImage.color = Color.red;
+                foreach (Evidence slot in evidenceList)
+                {
+                    if (!slot.isOccupied)
+                    {
+                        ActivateEvidence(slot, EvidenceReason.NONE);
+                        slot.correctionImage.SetActive(true);
+                        slot.evidenceText.enabled = false;
+                        slot.evidenceImage.enabled = false;
+                        break;
+                    }
+                }
             }
         }
     }
-
 }
