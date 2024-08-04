@@ -77,6 +77,9 @@ public class MoveClipBoard : MonoBehaviour
             case SceneNames.examine_scene:
                 StartCoroutine(MoveUsingSet2());
                 break;
+
+            default:
+                break;
         }
         
     }
