@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
     public static event Action<Vector2> OnMove;
     public static event Action<float> OnRotate;
 
-    public static event Action OnToggleNameSheet;
+    public static event Action OnToggleClipBoard;
     public static event Action OnFire;
 
     private void Awake()
@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private void HandleToggleNameSheet(InputAction.CallbackContext context) => OnToggleNameSheet?.Invoke();
+    private void HandleToggleNameSheet(InputAction.CallbackContext context) => OnToggleClipBoard?.Invoke();
     private void HandleFirePerformed(InputAction.CallbackContext context) => OnFire?.Invoke();
 
     private void FixedUpdate()
