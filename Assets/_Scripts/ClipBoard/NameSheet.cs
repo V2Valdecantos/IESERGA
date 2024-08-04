@@ -97,7 +97,6 @@ public class NameSheet : MonoBehaviour
 
     public bool CheckDuplicate(EvidenceReason reason)
     {
-        Debug.Log("Check");
         foreach (Evidence evidence in evidenceList)
         {
             if (evidence.reason == reason)

@@ -89,6 +89,8 @@ MonoBehaviour:
   positions:
   - {x: -8, y: -2, z: -2}
   - {x: -4.5, y: 6, z: -2}
+  - {x: -8.5, y: -9, z: -11.5}
+  - {x: -5, y: 0, z: -11.5}
   animationTime: 0.5
   centered: {x: 0, y: 6, z: -2}
   currentScene: 
@@ -1713,6 +1715,10 @@ PrefabInstance:
     - target: {fileID: 5626178608155128257, guid: 79aff31134795614bb64e493a48239d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333933406551665695, guid: 79aff31134795614bb64e493a48239d8, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
