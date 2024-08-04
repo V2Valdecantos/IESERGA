@@ -43,7 +43,7 @@ public class MoveClipBoard : MonoBehaviour
                 break;
 
             case SceneNames.examine_scene:
-                transform.localPosition = positions[2];
+                transform.localPosition = positions[0];
                 break;
 
             case SceneNames.end_screen:
