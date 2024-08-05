@@ -40,10 +40,12 @@ public class MoveClipBoard : MonoBehaviour
         {
             case SceneNames.conversation_scene:
                 transform.localPosition = positions[0];
+                state = PositionState.START;
                 break;
 
             case SceneNames.examine_scene:
-                transform.localPosition = positions[0];
+                transform.localPosition = positions[2];
+                state = PositionState.START;
                 break;
 
             case SceneNames.end_screen:
@@ -74,6 +76,9 @@ public class MoveClipBoard : MonoBehaviour
 
             case SceneNames.examine_scene:
                 StartCoroutine(MoveUsingSet2());
+                break;
+
+            default:
                 break;
         }
         
