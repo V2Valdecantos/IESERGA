@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9027890087515798093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Acne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +26,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4600093643230292159}
   - {fileID: 4410367499038190237}
@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 7651495122488147737}
   - component: {fileID: 4707368042004423950}
   - component: {fileID: 3753819267350642129}
-  m_Layer: 0
+  - component: {fileID: 4203703619565820044}
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,6 +139,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4203703619565820044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854723996349812541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef54eb759ebf43449b82d7c78c4534d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data_scriptable_object: {fileID: 11400000, guid: 2133a605d04ad1a41bbb1b80acee3547, type: 2}
 --- !u!1 &8290053252832882616
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +164,8 @@ GameObject:
   - component: {fileID: 2268464575370582523}
   - component: {fileID: 3099734427565007478}
   - component: {fileID: 3140781871399866992}
-  m_Layer: 0
+  - component: {fileID: 8825329526903610808}
+  m_Layer: 6
   m_Name: Cube_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,3 +258,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8825329526903610808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290053252832882616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef54eb759ebf43449b82d7c78c4534d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data_scriptable_object: {fileID: 11400000, guid: 2133a605d04ad1a41bbb1b80acee3547, type: 2}

@@ -44,8 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c494e0bee2aa8ad459648acb8ee50d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataNPC: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+  dataNPC:
+  - {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+  - {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+  - {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
   conversationTransform: {fileID: 0}
   examineBlurredTransform: {fileID: 0}
   examineZoomedTransform: {fileID: 0}
   currentLoadedScene: 
+  currentNPC: 0
