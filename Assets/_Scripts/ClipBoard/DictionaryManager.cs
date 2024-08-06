@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Reflection;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class DictionaryManager : MonoBehaviour
 {
@@ -91,7 +87,7 @@ public enum EvidenceReason : int
     GIRLS_ARMPIT_STAGE_4,
 
     GIRLS_BREASTS_STAGE_5,
-    PUBIC_HAIR_STAGE_5,
+    GIRLS_PUBIC_HAIR_STAGE_5
 }
 
 public enum TannerStages : int
@@ -102,6 +98,17 @@ public enum TannerStages : int
     STAGE_3,
     STAGE_4,
     STAGE_5
+}
+
+public enum ModelType : int
+{
+    NONE = -1,
+    MALE_ZOOMED = 0,
+    MALE_BLURRED,
+    MALE_NORMAL,
+    FEMALE_ZOOMED,
+    FEMALE_BLURRED,
+    FEMALE_NORMAL,
 }
 
 [System.Serializable]

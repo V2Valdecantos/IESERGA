@@ -21,7 +21,6 @@ public class DayAnimation : MonoBehaviour
 
     private void PlayAnimation(string text)
     {
-        Debug.Log("Play");
         dayText.text = text;
         director.Play();
     }

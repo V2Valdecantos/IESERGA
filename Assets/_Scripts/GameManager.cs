@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxFails = 3;
     [SerializeField] private int maxLevels = 5;
-    [SerializeField] private int maxPhases = 5;
 
     [Header("ReadOnly")]
     [SerializeField] private GameLevel currentLevel = GameLevel.LEVEL_1;
@@ -130,7 +129,7 @@ public class GameManager : MonoBehaviour
             IncrementLevel();
         }
 
-        spawner.SetNPC((int)currentLevel * maxPhases + (int)currentPhase);
+        spawner.SetNPC((int)currentLevel * maxLevels + (int)currentPhase);
     }
 
     private void IncrementLevel()

@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62868abc66fe5af48a8282070dd6b9a8, type: 3}
   m_Name: Test_NPC_Male_1
   m_EditorClassIdentifier: 
-  talkingModel: {fileID: 470237041534389563, guid: c720dd8a656ca1a41a522d3860698575, type: 3}
-  blurredModel: {fileID: 470237041534389563, guid: 39f9ebe84d619ae4288cae090f26e655, type: 3}
-  zoomedModel: {fileID: 470237041534389563, guid: 2580b2a200232ec4d856ef634ec3b104, type: 3}
   tannerStage: 2
-  reasonsList: 0000000001000000
+  reasonsList: 080000000b000000
   nameNPC: Test
   sexNPC: M
