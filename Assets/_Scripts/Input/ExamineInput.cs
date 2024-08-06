@@ -27,6 +27,7 @@ public class ExamineInput : MonoBehaviour
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
+                        Debug.Log("Found Symptom");
                         hit.collider.gameObject.GetComponent<ClickableSymptoms>().DisplayTooltip();
                     }
                 }
