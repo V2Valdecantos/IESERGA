@@ -154,4 +154,9 @@ public class NameSheet : MonoBehaviour
             }
         }
     }
+
+    public bool CheckVerdict()
+    {
+        return NPCSpawner.instance.CurrentTannerStage == (TannerStages)dropdown.value ? true : false;
+    }
 }
