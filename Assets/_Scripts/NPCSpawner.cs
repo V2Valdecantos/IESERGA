@@ -5,17 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class NPCSpawner : MonoBehaviour
 {
-    [SerializeField] private NPC_SO dataNPC;
+    [SerializeField] private List<NPC_SO> dataNPC;
+
     [Header("ReadOnly")]
     [SerializeField] private Transform conversationTransform;
     [SerializeField] private Transform examineBlurredTransform;
     [SerializeField] private Transform examineZoomedTransform;
     [SerializeField] private string currentLoadedScene;
 
+    [SerializeField] private int currentNPC = 0;
+
     public static event Action<string, string> OnSpawn;
     public static NPCSpawner instance;
-    public List<EvidenceReason> CurrentReasonsList => dataNPC.ReasonsList;
-    public TannerStages CurrentTannerStage => dataNPC.TannerStage;
+    public List<EvidenceReason> CurrentReasonsList => dataNPC[currentNPC].ReasonsList;
+    public TannerStages CurrentTannerStage => dataNPC[currentNPC].TannerStage;
 
     private void Awake()
     {
@@ -42,16 +45,16 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnNPC()
     {
-        OnSpawn?.Invoke(dataNPC.NameNPC, dataNPC.SexNPC);
+        OnSpawn?.Invoke(dataNPC[currentNPC].NameNPC, dataNPC[currentNPC].SexNPC);
 
         switch (currentLoadedScene)
         {
             case SceneNames.examine_scene:
-                Instantiate(dataNPC.ZoomedModel, examineZoomedTransform);
-                Instantiate(dataNPC.BlurredModel, examineBlurredTransform);
+                Instantiate(dataNPC[currentNPC].ZoomedModel, examineZoomedTransform);
+                Instantiate(dataNPC[currentNPC].BlurredModel, examineBlurredTransform);
                 break;
             case SceneNames.conversation_scene:
-                Instantiate(dataNPC.TalkingModel, conversationTransform);
+                Instantiate(dataNPC[currentNPC].TalkingModel, conversationTransform);
                 break;
             case SceneNames.end_screen:
             case SceneNames.title_screen:
@@ -75,11 +78,23 @@ public class NPCSpawner : MonoBehaviour
                 break;
             case SceneNames.end_screen:
             case SceneNames.title_screen:
+                Destroy(gameObject);
                 return;
             default:
                 Debug.LogError("Current Scene is Unknown");
                 break;
         }
+    }
+
+    public void SetNPC(int index)
+    {
+        if (index < 0 || index > dataNPC.Count)
+        {
+            Debug.LogError("NPC DATA MISSING \n INDEX OUT OF BOUNDS");
+            return;
+        }
+
+        currentNPC = index;
     }
 
     private void InitializeSingleton()
