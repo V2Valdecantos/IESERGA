@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class NPCSpawner : MonoBehaviour
 {
     [SerializeField] private List<NPC_SO> dataNPC;
+    [SerializeField] private List<GameObject> zoomedModels;
 
     [Header("ReadOnly")]
     [SerializeField] private string currentLoadedScene;
     [SerializeField] private int currentNPC = 0;
+    [SerializeField] private GameObject male_model;
 
     private Dictionary<ModelType, GameObject> modelList = new Dictionary<ModelType, GameObject>();
     private Dictionary<EvidenceReason, GameObject> symptomsList = new Dictionary<EvidenceReason, GameObject>();
@@ -19,9 +21,14 @@ public class NPCSpawner : MonoBehaviour
     public List<EvidenceReason> CurrentReasonsList => dataNPC[currentNPC].ReasonsList;
     public TannerStages CurrentTannerStage => dataNPC[currentNPC].TannerStage;
 
+    public int CurrentNPC => currentNPC;
+
     private void Awake()
     {
         InitializeSingleton();
+        if (male_model != null)
+            this.RegisterObject(male_model, ModelType.MALE_NORMAL);
+
     }
 
     private void OnEnable()
@@ -67,6 +74,7 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnNormal()
     {
+        
         switch(dataNPC[currentNPC].SexNPC)
         {
             case "F":
@@ -85,6 +93,8 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnExamine()
     {
+      
+
         switch (dataNPC[currentNPC].SexNPC)
         {
             case "F":
@@ -142,6 +152,11 @@ public class NPCSpawner : MonoBehaviour
     public void UnregisterObject(ModelType type)
     {
         modelList.Remove(type);
+    }
+
+    public void NextLevel()
+    {
+        this.currentNPC += 1;
     }
 
     private void InitializeSingleton()

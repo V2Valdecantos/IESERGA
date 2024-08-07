@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [Serializable]
@@ -31,12 +32,14 @@ public class NameSheet : MonoBehaviour
     {
         NPCSpawner.OnSpawn += UpdateNameAndSex;
         ModularPart.OnPartHit += AddEvidence;
+        SceneManager.sceneUnloaded += ResetSheet;
     }
 
     private void OnDisable()
     {
         NPCSpawner.OnSpawn -= UpdateNameAndSex;
         ModularPart.OnPartHit -= AddEvidence;
+        SceneManager.sceneUnloaded -= ResetSheet;
     }
 
     private void Start()
@@ -136,6 +139,8 @@ public class NameSheet : MonoBehaviour
         List<EvidenceReason> correctReasons = NPCSpawner.instance.CurrentReasonsList;
         HashSet<EvidenceReason> currentReasons = new HashSet<EvidenceReason>(reasons.ConvertAll(e => e.reason));
 
+        GameManager.instance.SetCount(reasons.Count);
+
         foreach (EvidenceReason correctReason in correctReasons)
         {
             if (!currentReasons.Contains(correctReason))
@@ -158,5 +163,19 @@ public class NameSheet : MonoBehaviour
     public bool CheckVerdict()
     {
         return NPCSpawner.instance.CurrentTannerStage == (TannerStages)dropdown.value ? true : false;
+    }
+
+    private void ResetSheet(Scene scene)
+    {
+        if (scene.name == SceneNames.end_screen)
+        {
+            foreach (Evidence evidence in evidenceList)
+            {
+                RemoveEvidence(evidence);
+            }
+
+            verdictCorrection.enabled = false;
+            dropdown.value = 0;
+        }
     }
 }

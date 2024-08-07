@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62868abc66fe5af48a8282070dd6b9a8, type: 3}
+  m_Name: L3_NPC_Male_1 3
+  m_EditorClassIdentifier: 
+  talkingModel: {fileID: 470237041534389563, guid: b273cfc73aabbe141b2f82c3ff436ead, type: 3}
+  blurredModel: {fileID: 470237041534389563, guid: 46f7aab7f061dc74ebf6c7a0408beaff, type: 3}
+  zoomedModel: {fileID: 470237041534389563, guid: 0890feec00d6a0344b115239699aa15b, type: 3}
+  tannerStage: 2
+  reasonsList: 050000000800000006000000
+  nameNPC: Pedro
+  sexNPC: M

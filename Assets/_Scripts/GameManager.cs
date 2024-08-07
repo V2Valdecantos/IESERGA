@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using TMPro;
 using UnityEngine;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxFails = 3;
     [SerializeField] private int maxLevels = 5;
+    [SerializeField] private int maxPhases = 5;
 
     [Header("ReadOnly")]
     [SerializeField] private GameLevel currentLevel = GameLevel.LEVEL_1;
@@ -39,10 +41,19 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int numberOfFails = 0;
     [SerializeField] private bool isTriggerStartOfDayAnimation = true;
+    [SerializeField] private bool isGameEnd = false;
+    [SerializeField] private bool isGameWin = false;
+    [SerializeField] private int score = 0;
+    private int count = 0;
 
     public static GameManager instance;
 
     public static event Action<string> OnTriggerDayStart;
+
+    public bool IsGameEnd => isGameEnd;
+    public bool IsGameWin => isGameWin;
+
+    public int Score => score;
 
     private void Awake()
     {
@@ -61,8 +72,6 @@ public class GameManager : MonoBehaviour
 
     private void GetCurrentScene(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("SceneChange");
-
         if (nameSheet == null || spawner == null)
         {
             Debug.LogError("Dependencies not set in the Inspector.");
@@ -79,6 +88,10 @@ public class GameManager : MonoBehaviour
                 HandleConversationScene();
                 break;
 
+            case SceneNames.title_screen:
+                Destroy(gameObject); 
+                break;
+
             default:
                 break;
         }
@@ -88,12 +101,26 @@ public class GameManager : MonoBehaviour
     {
         if (nameSheet.CheckVerdict())
         {
+            ScoreSubmission();
             IncrementPhase();
         }
         else
         {
             HandleFailure();
         }
+    }
+
+    private void ScoreSubmission()
+    {
+        int correctReasons = NPCSpawner.instance.CurrentReasonsList.Count;
+        int correctCount = count;
+        score += 50;
+        score += (correctCount * 50) / correctReasons;
+    }
+
+    public void SetCount(int count)
+    {
+        this.count = count;
     }
 
     private void HandleConversationScene()
@@ -110,7 +137,8 @@ public class GameManager : MonoBehaviour
         numberOfFails++;
         if (numberOfFails >= maxFails)
         {
-            Debug.Log("Send To GameOver");
+            isGameEnd = true;
+            isGameWin = false;
         }
         else
         {
@@ -120,7 +148,7 @@ public class GameManager : MonoBehaviour
 
     private void IncrementPhase()
     {
-        if (currentPhase < GamePhase.PHASE_5)
+        if ((int)currentPhase < maxPhases - 1)
         {
             currentPhase++;
         }
@@ -129,12 +157,12 @@ public class GameManager : MonoBehaviour
             IncrementLevel();
         }
 
-        spawner.SetNPC((int)currentLevel * maxLevels + (int)currentPhase);
+        spawner.NextLevel();
     }
 
     private void IncrementLevel()
     {
-        if (currentLevel < GameLevel.LEVEL_5)
+        if ((int)currentLevel < maxLevels - 1)
         {
             currentLevel++;
             currentPhase = GamePhase.PHASE_1;
@@ -145,7 +173,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Send To Game Win");
+            isGameEnd = true;
+            isGameWin = true;
         }
     }
 
