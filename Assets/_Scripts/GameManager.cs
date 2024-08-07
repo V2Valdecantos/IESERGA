@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxFails = 3;
     [SerializeField] private int maxLevels = 5;
+    [SerializeField] private int maxPhases = 5;
 
     [Header("ReadOnly")]
     [SerializeField] private GameLevel currentLevel = GameLevel.LEVEL_1;
@@ -61,8 +62,6 @@ public class GameManager : MonoBehaviour
 
     private void GetCurrentScene(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("SceneChange");
-
         if (nameSheet == null || spawner == null)
         {
             Debug.LogError("Dependencies not set in the Inspector.");
@@ -77,6 +76,10 @@ public class GameManager : MonoBehaviour
 
             case SceneNames.conversation_scene:
                 HandleConversationScene();
+                break;
+
+            case SceneNames.title_screen:
+                Destroy(gameObject); 
                 break;
 
             default:
@@ -120,7 +123,7 @@ public class GameManager : MonoBehaviour
 
     private void IncrementPhase()
     {
-        if (currentPhase < GamePhase.PHASE_5)
+        if ((int)currentPhase < maxPhases - 1)
         {
             currentPhase++;
         }
@@ -129,12 +132,12 @@ public class GameManager : MonoBehaviour
             IncrementLevel();
         }
 
-        spawner.SetNPC((int)currentLevel * maxLevels + (int)currentPhase);
+        spawner.SetNPC((int)currentLevel * (maxPhases - 1) + (int)currentPhase);
     }
 
     private void IncrementLevel()
     {
-        if (currentLevel < GameLevel.LEVEL_5)
+        if ((int)currentLevel < maxLevels - 1)
         {
             currentLevel++;
             currentPhase = GamePhase.PHASE_1;
