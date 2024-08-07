@@ -52,7 +52,8 @@ public class MoveClipBoard : MonoBehaviour
                 transform.localPosition = centered;
                 break;
 
-            case SceneNames.title_screen:
+            case SceneNames.win_screen:
+            case SceneNames.lose_screen:
                 Destroy(gameObject);
                 break;
 
