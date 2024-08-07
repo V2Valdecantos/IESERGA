@@ -65,6 +65,7 @@ public class NPCSpawner : MonoBehaviour
             case SceneNames.title_screen:
                 Destroy(gameObject);
                 return;
+
             default:
                 break;
         }
@@ -72,7 +73,7 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnEvent()
     {
-        if (currentNPC < 0 || currentNPC > dataNPC.Count)
+        if (currentNPC > 0 || currentNPC < dataNPC.Count)
             OnSpawn?.Invoke(dataNPC[currentNPC].NameNPC, dataNPC[currentNPC].SexNPC);
     }
 
