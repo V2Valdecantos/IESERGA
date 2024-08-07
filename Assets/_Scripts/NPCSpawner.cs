@@ -11,6 +11,7 @@ public class NPCSpawner : MonoBehaviour
     [Header("ReadOnly")]
     [SerializeField] private string currentLoadedScene;
     [SerializeField] private int currentNPC = 0;
+    [SerializeField] private GameObject male_model;
 
     private Dictionary<ModelType, GameObject> modelList = new Dictionary<ModelType, GameObject>();
     private Dictionary<EvidenceReason, GameObject> symptomsList = new Dictionary<EvidenceReason, GameObject>();
@@ -22,6 +23,8 @@ public class NPCSpawner : MonoBehaviour
     private void Awake()
     {
         InitializeSingleton();
+        if (male_model != null)
+            this.RegisterObject(male_model, ModelType.MALE_NORMAL);
     }
 
     private void OnEnable()
