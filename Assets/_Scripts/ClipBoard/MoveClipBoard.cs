@@ -54,6 +54,7 @@ public class MoveClipBoard : MonoBehaviour
 
             case SceneNames.win_screen:
             case SceneNames.lose_screen:
+                Debug.Log("A");
                 Destroy(gameObject);
                 break;
 

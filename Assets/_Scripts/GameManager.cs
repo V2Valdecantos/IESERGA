@@ -72,12 +72,6 @@ public class GameManager : MonoBehaviour
 
     private void GetCurrentScene(Scene scene, LoadSceneMode mode)
     {
-        if (nameSheet == null || spawner == null)
-        {
-            Debug.LogError("Dependencies not set in the Inspector.");
-            return;
-        }
-
         switch (scene.name)
         {
             case SceneNames.end_screen:

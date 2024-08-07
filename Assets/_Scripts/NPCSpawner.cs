@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -50,26 +51,29 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnNPC()
     {
-        OnSpawn?.Invoke(dataNPC[currentNPC].NameNPC, dataNPC[currentNPC].SexNPC);
-
         switch (currentLoadedScene)
         {
             case SceneNames.examine_scene:
+                SpawnEvent();
                 SpawnExamine();
                 SpawnSymptoms();
                 break;
             case SceneNames.conversation_scene:
+                SpawnEvent();
                 SpawnNormal();
-                break;
-            case SceneNames.end_screen:
                 break;
             case SceneNames.title_screen:
                 Destroy(gameObject);
                 return;
             default:
-                Debug.LogError("Current Scene is Unknown");
                 break;
         }
+    }
+
+    private void SpawnEvent()
+    {
+        if (currentNPC < 0 || currentNPC > dataNPC.Count)
+            OnSpawn?.Invoke(dataNPC[currentNPC].NameNPC, dataNPC[currentNPC].SexNPC);
     }
 
     private void SpawnNormal()
@@ -93,8 +97,6 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnExamine()
     {
-      
-
         switch (dataNPC[currentNPC].SexNPC)
         {
             case "F":
