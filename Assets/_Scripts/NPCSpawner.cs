@@ -72,7 +72,7 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnEvent()
     {
-        if (currentNPC < 0 || currentNPC > dataNPC.Count)
+        if (!(currentNPC < 0) || !(currentNPC > dataNPC.Count))
             OnSpawn?.Invoke(dataNPC[currentNPC].NameNPC, dataNPC[currentNPC].SexNPC);
     }
 
