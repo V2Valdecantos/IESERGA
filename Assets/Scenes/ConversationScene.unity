@@ -1706,7 +1706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4607987777627167290, guid: 39487acf3859c134babbc7ac80e073c7, type: 3}
       propertyPath: maxLevels
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4607987777627167290, guid: 39487acf3859c134babbc7ac80e073c7, type: 3}
       propertyPath: maxPhases
