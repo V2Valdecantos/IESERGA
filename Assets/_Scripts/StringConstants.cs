@@ -3,7 +3,7 @@ public class SceneNames
     public const string examine_scene = "ExamineScene";
     public const string conversation_scene = "ConversationScene";
     public const string title_screen = "TitleScreen";
-    public const string end_screen = "EndScreen";
+    public const string end_screen = "ResultsScreen";
 }
 
 public class TagNames

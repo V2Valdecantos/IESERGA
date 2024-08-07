@@ -38,6 +38,7 @@ public class ClickableSymptoms : MonoBehaviour
         if (this._tooltip != null)
         {
             this._tooltip.SetActive(true);
+            Debug.Log("Displaying Text");
         }
     }
 

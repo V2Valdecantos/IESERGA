@@ -60,6 +60,16 @@ public class RaycastScanner : MonoBehaviour
     {
         ModularPart part = hit.collider.GetComponent<ModularPart>();
 
+        ////If object is a symptom
+        //if (hit.collider.gameObject.GetComponent<ClickableSymptoms>() != null)
+        //{
+        //    if (Input.GetMouseButtonDown(0))
+        //    {
+        //        Debug.Log("Found Symptom");
+        //        hit.collider.gameObject.GetComponent<ClickableSymptoms>().DisplayTooltip();
+        //    }
+        //}
+
         if (part != null)
         {
             part.BroadcastData();
