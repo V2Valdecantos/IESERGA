@@ -28,6 +28,7 @@ public class NPCSpawner : MonoBehaviour
         InitializeSingleton();
         if (male_model != null)
             this.RegisterObject(male_model, ModelType.MALE_NORMAL);
+
     }
 
     private void OnEnable()
@@ -152,6 +153,11 @@ public class NPCSpawner : MonoBehaviour
     public void UnregisterObject(ModelType type)
     {
         modelList.Remove(type);
+    }
+
+    public void NextLevel()
+    {
+        this.currentNPC += 1;
     }
 
     private void InitializeSingleton()
