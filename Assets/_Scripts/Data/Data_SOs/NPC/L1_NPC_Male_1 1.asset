@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62868abc66fe5af48a8282070dd6b9a8, type: 3}
   m_Name: L1_NPC_Male_1 1
   m_EditorClassIdentifier: 
-  talkingModel: {fileID: 470237041534389563, guid: 6164d9be9610ccb41939fd1405710c54, type: 3}
-  blurredModel: {fileID: 470237041534389563, guid: c66410f2a79e66347b0ae4ec4be47f90, type: 3}
   zoomedModel: {fileID: 470237041534389563, guid: aa91ecf96cfbdce4e80a24957e2a0173, type: 3}
   tannerStage: 0
-  reasonsList: 0000000001000000
+  reasonsList: 0000000000000000
   nameNPC: Julio
   sexNPC: M
