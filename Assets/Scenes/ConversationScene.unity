@@ -1754,6 +1754,34 @@ PrefabInstance:
       propertyPath: male_model
       value: 
       objectReference: {fileID: 470237041534389563, guid: c720dd8a656ca1a41a522d3860698575, type: 3}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71f28675756b5774da88d33b6127f5d4, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: dd7741edf9b84db43a4818eaa629cbbb, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c0e36dc998b929243be2ea8f785b0aba, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: zoomedModels.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: zoomedModels.Array.data[0]
+      value: 
+      objectReference: {fileID: 470237041534389563, guid: aa91ecf96cfbdce4e80a24957e2a0173, type: 3}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: zoomedModels.Array.data[1]
+      value: 
+      objectReference: {fileID: 470237041534389563, guid: be4c5bad4516b314481c2b06c77f6546, type: 3}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: zoomedModels.Array.data[2]
+      value: 
+      objectReference: {fileID: 470237041534389563, guid: 0890feec00d6a0344b115239699aa15b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

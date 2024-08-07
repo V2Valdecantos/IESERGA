@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class NPCSpawner : MonoBehaviour
 {
     [SerializeField] private List<NPC_SO> dataNPC;
+    [SerializeField] private List<GameObject> zoomedModels;
 
     [Header("ReadOnly")]
     [SerializeField] private string currentLoadedScene;
@@ -19,6 +20,8 @@ public class NPCSpawner : MonoBehaviour
     public static NPCSpawner instance;
     public List<EvidenceReason> CurrentReasonsList => dataNPC[currentNPC].ReasonsList;
     public TannerStages CurrentTannerStage => dataNPC[currentNPC].TannerStage;
+
+    public int CurrentNPC => currentNPC;
 
     private void Awake()
     {
@@ -70,6 +73,7 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnNormal()
     {
+        
         switch(dataNPC[currentNPC].SexNPC)
         {
             case "F":
@@ -88,6 +92,8 @@ public class NPCSpawner : MonoBehaviour
 
     private void SpawnExamine()
     {
+      
+
         switch (dataNPC[currentNPC].SexNPC)
         {
             case "F":
@@ -97,7 +103,8 @@ public class NPCSpawner : MonoBehaviour
 
             case "M":
                 modelList[ModelType.MALE_BLURRED].SetActive(true);
-                modelList[ModelType.MALE_ZOOMED].SetActive(true);
+                //modelList[ModelType.MALE_ZOOMED].SetActive(true);
+                Instantiate(this.zoomedModels[this.currentNPC], modelList[ModelType.MALE_ZOOMED].transform, GameObject.FindGameObjectWithTag("male_zoomed_slot"));
                 break;
 
             default:
