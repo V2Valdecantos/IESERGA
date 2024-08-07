@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using TMPro;
 using UnityEngine;
@@ -40,10 +41,19 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int numberOfFails = 0;
     [SerializeField] private bool isTriggerStartOfDayAnimation = true;
+    [SerializeField] private bool isGameEnd = false;
+    [SerializeField] private bool isGameWin = false;
+    [SerializeField] private int score = 0;
+    private int count = 0;
 
     public static GameManager instance;
 
     public static event Action<string> OnTriggerDayStart;
+
+    public bool IsGameEnd => isGameEnd;
+    public bool IsGameWin => isGameWin;
+
+    public int Score => score;
 
     private void Awake()
     {
@@ -91,12 +101,26 @@ public class GameManager : MonoBehaviour
     {
         if (nameSheet.CheckVerdict())
         {
+            ScoreSubmission();
             IncrementPhase();
         }
         else
         {
             HandleFailure();
         }
+    }
+
+    private void ScoreSubmission()
+    {
+        int correctReasons = NPCSpawner.instance.CurrentReasonsList.Count;
+        int correctCount = count;
+        score += 50;
+        score += (correctCount * 50) / correctReasons;
+    }
+
+    public void SetCount(int count)
+    {
+        this.count = count;
     }
 
     private void HandleConversationScene()
@@ -113,7 +137,8 @@ public class GameManager : MonoBehaviour
         numberOfFails++;
         if (numberOfFails >= maxFails)
         {
-            Debug.Log("Send To GameOver");
+            isGameEnd = true;
+            isGameWin = false;
         }
         else
         {
@@ -148,7 +173,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Send To Game Win");
+            isGameEnd = true;
+            isGameWin = true;
         }
     }
 

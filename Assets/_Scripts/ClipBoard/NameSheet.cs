@@ -136,6 +136,8 @@ public class NameSheet : MonoBehaviour
         List<EvidenceReason> correctReasons = NPCSpawner.instance.CurrentReasonsList;
         HashSet<EvidenceReason> currentReasons = new HashSet<EvidenceReason>(reasons.ConvertAll(e => e.reason));
 
+        GameManager.instance.SetCount(reasons.Count);
+
         foreach (EvidenceReason correctReason in correctReasons)
         {
             if (!currentReasons.Contains(correctReason))

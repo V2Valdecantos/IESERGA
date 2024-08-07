@@ -23,6 +23,16 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(SceneNames.end_screen);
     }
 
+    public void LoadWinScreen()
+    {
+        SceneManager.LoadScene(SceneNames.win_screen);
+    }
+
+    public void LoadLoseScreen()
+    {
+        SceneManager.LoadScene(SceneNames.lose_screen);
+    }
+
     public void QuitGame()
     {
         Application.Quit();

@@ -4,6 +4,8 @@ public class SceneNames
     public const string conversation_scene = "ConversationScene";
     public const string title_screen = "TitleScreen";
     public const string end_screen = "ResultsScreen";
+    public const string win_screen = "WinScreen";
+    public const string lose_screen = "LoseScreen";
 }
 
 public class TagNames
