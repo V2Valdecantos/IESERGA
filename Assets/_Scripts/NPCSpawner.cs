@@ -1,21 +1,23 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NPCSpawner : MonoBehaviour
 {
-    [SerializeField] private NPC_SO dataNPC;
-    [Header("ReadOnly")]
-    [SerializeField] private Transform conversationTransform;
-    [SerializeField] private Transform examineBlurredTransform;
-    [SerializeField] private Transform examineZoomedTransform;
-    [SerializeField] private string currentLoadedScene;
+    [SerializeField] private List<NPC_SO> dataNPC;
 
+    [Header("ReadOnly")]
+    [SerializeField] private string currentLoadedScene;
+    [SerializeField] private int currentNPC = 0;
+
+    private Dictionary<ModelType, GameObject> modelList = new Dictionary<ModelType, GameObject>();
+    private Dictionary<EvidenceReason, GameObject> symptomsList = new Dictionary<EvidenceReason, GameObject>();
     public static event Action<string, string> OnSpawn;
     public static NPCSpawner instance;
-    public List<EvidenceReason> CurrentReasonsList => dataNPC.ReasonsList;
-    public TannerStages CurrentTannerStage => dataNPC.TannerStage;
+    public List<EvidenceReason> CurrentReasonsList => dataNPC[currentNPC].ReasonsList;
+    public TannerStages CurrentTannerStage => dataNPC[currentNPC].TannerStage;
 
     private void Awake()
     {
@@ -36,25 +38,26 @@ public class NPCSpawner : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         currentLoadedScene = scene.name;
-        SetObjectParentTransform();
         SpawnNPC();
     }
 
     private void SpawnNPC()
     {
-        OnSpawn?.Invoke(dataNPC.NameNPC, dataNPC.SexNPC);
+        OnSpawn?.Invoke(dataNPC[currentNPC].NameNPC, dataNPC[currentNPC].SexNPC);
 
         switch (currentLoadedScene)
         {
             case SceneNames.examine_scene:
-                Instantiate(dataNPC.ZoomedModel, examineZoomedTransform);
-                Instantiate(dataNPC.BlurredModel, examineBlurredTransform);
+                SpawnExamine();
+                SpawnSymptoms();
                 break;
             case SceneNames.conversation_scene:
-                Instantiate(dataNPC.TalkingModel, conversationTransform);
+                SpawnNormal();
                 break;
             case SceneNames.end_screen:
+                break;
             case SceneNames.title_screen:
+                Destroy(gameObject);
                 return;
             default:
                 Debug.LogError("Current Scene is Unknown");
@@ -62,24 +65,83 @@ public class NPCSpawner : MonoBehaviour
         }
     }
 
-    private void SetObjectParentTransform()
+    private void SpawnNormal()
     {
-        switch (currentLoadedScene)
+        switch(dataNPC[currentNPC].SexNPC)
         {
-            case SceneNames.conversation_scene:
-                conversationTransform = GameObject.FindWithTag(TagNames.conversation_slot).transform;
+            case "F":
+                modelList[ModelType.FEMALE_NORMAL].SetActive(true);
                 break;
-            case SceneNames.examine_scene:
-                examineBlurredTransform = GameObject.FindWithTag(TagNames.blurred_slot).transform;
-                examineZoomedTransform = GameObject.FindWithTag(TagNames.zoomed_slot).transform;
+
+            case "M":
+                modelList[ModelType.MALE_NORMAL].SetActive(true);
                 break;
-            case SceneNames.end_screen:
-            case SceneNames.title_screen:
-                return;
+
             default:
-                Debug.LogError("Current Scene is Unknown");
+                Debug.LogError("Spawning ERROR");
                 break;
         }
+    }
+
+    private void SpawnExamine()
+    {
+        switch (dataNPC[currentNPC].SexNPC)
+        {
+            case "F":
+                modelList[ModelType.FEMALE_BLURRED].SetActive(true);
+                modelList[ModelType.FEMALE_ZOOMED].SetActive(true);
+                break;
+
+            case "M":
+                modelList[ModelType.MALE_BLURRED].SetActive(true);
+                modelList[ModelType.MALE_ZOOMED].SetActive(true);
+                break;
+
+            default:
+                Debug.LogError("Spawning ERROR");
+                break;
+        }
+    }
+
+    private void SpawnSymptoms()
+    {
+        List<EvidenceReason> reasonsList = dataNPC[currentNPC].ReasonsList;
+
+        foreach (EvidenceReason reason in reasonsList)
+        {
+            symptomsList[reason].SetActive(true);
+        }
+    }
+
+    public void SetNPC(int index)
+    {
+        if (index < 0 || index > dataNPC.Count)
+        {
+            Debug.LogError("NPC DATA MISSING \n INDEX OUT OF BOUNDS");
+            return;
+        }
+
+        currentNPC = index;
+    }
+
+    public void RegisterObject(GameObject obj, EvidenceReason type)
+    {
+        symptomsList.Add(type, obj);
+    }
+
+    public void RegisterObject(GameObject obj, ModelType type)
+    {
+        modelList.Add(type, obj);
+    }
+
+    public void UnregisterObject(EvidenceReason type)
+    {
+        symptomsList.Remove(type);
+    }
+
+    public void UnregisterObject(ModelType type)
+    {
+        modelList.Remove(type);
     }
 
     private void InitializeSingleton()

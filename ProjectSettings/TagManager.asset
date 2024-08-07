@@ -5,9 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - UI_Blocker
-  - conversation_slot
-  - zoomed_slot
-  - blurred_slot
   layers:
   - Default
   - TransparentFX

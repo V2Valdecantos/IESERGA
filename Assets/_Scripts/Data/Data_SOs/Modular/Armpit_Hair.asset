@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Armpit_Hair
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 49573a08b64f9b642bc594335bd67f91, type: 3}
-  reason: 1
+  reason: 11
