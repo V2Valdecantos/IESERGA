@@ -1164,6 +1164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 6771397488125627869}
+  zoomedModels: []
   modelType: 2
 --- !u!1 &1910043320
 GameObject:
@@ -1781,6 +1782,18 @@ PrefabInstance:
       propertyPath: dataNPC.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71f28675756b5774da88d33b6127f5d4, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: dd7741edf9b84db43a4818eaa629cbbb, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c0e36dc998b929243be2ea8f785b0aba, type: 2}
     - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
       propertyPath: dataNPC.Array.data[3]
       value: 

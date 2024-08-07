@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
             IncrementLevel();
         }
 
-        spawner.SetNPC((int)currentLevel * (maxPhases - 1) + (int)currentPhase);
+        spawner.NextLevel();
     }
 
     private void IncrementLevel()

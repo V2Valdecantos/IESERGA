@@ -104,8 +104,7 @@ public class NPCSpawner : MonoBehaviour
 
             case "M":
                 modelList[ModelType.MALE_BLURRED].SetActive(true);
-                //modelList[ModelType.MALE_ZOOMED].SetActive(true);
-                Instantiate(this.zoomedModels[this.currentNPC], modelList[ModelType.MALE_ZOOMED].transform, GameObject.FindGameObjectWithTag("male_zoomed_slot"));
+                modelList[ModelType.MALE_ZOOMED].SetActive(true);
                 break;
 
             default:

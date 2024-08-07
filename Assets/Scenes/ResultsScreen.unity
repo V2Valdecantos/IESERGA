@@ -2351,6 +2351,178 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b15f4ae5ddc07104a846c08bd7d2d74b, type: 3}
+--- !u!1001 &2002138502
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652854484639606958, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766409026845899918, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: m_Name
+      value: NPCManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71f28675756b5774da88d33b6127f5d4, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: dd7741edf9b84db43a4818eaa629cbbb, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c0e36dc998b929243be2ea8f785b0aba, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[18]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[19]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[20]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[21]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[22]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[23]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    - target: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+      propertyPath: dataNPC.Array.data[24]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5879579d70bbad48a9655c217b56737, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+--- !u!114 &2002138503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4513152758014867155, guid: f5a3e61d049428c43aeb201af5d7ffb1, type: 3}
+  m_PrefabInstance: {fileID: 2002138502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c494e0bee2aa8ad459648acb8ee50d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2052869511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,7 +2559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 430, y: -175.83333}
+  m_AnchoredPosition: {x: 430, y: -463.2143}
   m_SizeDelta: {x: 320, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052869513
@@ -2434,6 +2606,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2002138503}
+        m_TargetAssemblyTypeName: NPCSpawner, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1379564982}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadConversationScreen
@@ -2629,3 +2813,4 @@ SceneRoots:
   - {fileID: 1379564983}
   - {fileID: 1978401796}
   - {fileID: 672483029}
+  - {fileID: 2002138502}
